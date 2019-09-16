@@ -13,18 +13,12 @@ from sklearn.cluster import KMeans
 from sklearn.cluster import MiniBatchKMeans
 from matplotlib import pyplot as plt
 
-def rescaleColor(colorEightBit):
-    colors = list(colorEightBit)
-    colors.reverse()
-    return [i / 255 for i in colors]
 
-def rgb_to_hex(rgb):
-    return '#%02x%02x%02x' % (int(rgb[0]), int(rgb[1]), int(rgb[2]))
 
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-(CLST_NUMBER, MAX_ITER) = (15, 1000)
+(CLST_NUMBER, MAX_ITER) = (8, 1000)
 (I_PATH,O_PATH) = ('./in/', './out/')
 
 ##############################################################################
@@ -32,19 +26,20 @@ def rgb_to_hex(rgb):
 ##############################################################################
 filepaths = sorted(glob.glob(I_PATH + '*.jpg'))
 
-path = filepaths[1]
+path = filepaths[2]
 print(path)
+
+# Read image and flatten it
 frame = cv2.imread(path)
-
-
-(flatFrame, clusters) = ([], [])
 frame = frame.reshape((frame.shape[0] * frame.shape[1], 3))
+# Cluster the colors for dominance detection
 kmeans = KMeans(n_clusters = CLST_NUMBER).fit(frame)
 (palette, labels) = (kmeans.cluster_centers_, kmeans.labels_)
-rescale = [rescaleColor(color) for color in palette]
+# Rescale the colors for matplotlib
+(clusters, rescale) = ([], [aux.reshapeColor(color) for color in palette])
 clusters.append(rescale)
 sortedClusters = [sorted(cls) for cls in clusters]
-
+# Plot results
 fig, ax = plt.subplots(figsize=(10, 5))
 ax.axis('off')
 plt.imshow(list(map(list, zip(*sortedClusters))))

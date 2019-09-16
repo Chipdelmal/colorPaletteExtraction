@@ -8,6 +8,7 @@
 
 import cv2
 import glob
+import aux
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.cluster import MiniBatchKMeans
@@ -22,7 +23,7 @@ from matplotlib import pyplot as plt
 ##############################################################################
 # Load images
 ##############################################################################
-filepaths = sorted(glob.glob(I_PATH + '*.jpg'))
+filepaths = sorted(glob.glob(I_PATH + '*.png'))
 path = filepaths[0]
 print(path)
 
@@ -40,8 +41,17 @@ rescaled = [aux.reshapeColor(color) for color in palette]
 sortedClusters = [sorted(cls) for cls in [rescaled]]
 
 ##############################################################################
+# List hex and rgb
+##############################################################################
+sortedPalette = [aux.upscaleColor(i) for i in sortedClusters[0]]
+(hexColors, rgbColors) = (
+        [aux.rgb_to_hex(i) for i in sortedPalette],
+        sortedPalette
+    )
+
+##############################################################################
 # Plot palette
 ##############################################################################
-fig, ax = plt.subplots(figsize=(10,5))
+(fig, ax) = plt.subplots(figsize=(10, 5))
 ax.axis('off')
 plt.imshow(list(map(list, zip(*sortedClusters))))

@@ -14,7 +14,9 @@ from sklearn.cluster import MiniBatchKMeans
 from matplotlib import pyplot as plt
 
 def rescaleColor(colorEightBit):
-    return [i / 255 for i in colorEightBit]
+    colors = list(colorEightBit)
+    colors.reverse()
+    return [i / 255 for i in colors]
 
 def rgb_to_hex(rgb):
     return '#%02x%02x%02x' % (int(rgb[0]), int(rgb[1]), int(rgb[2]))

@@ -23,7 +23,7 @@ from matplotlib import pyplot as plt
 # Load images
 ##############################################################################
 filepaths = sorted(glob.glob(I_PATH + '*.jpg'))
-path = filepaths[2]
+path = filepaths[0]
 print(path)
 
 ##############################################################################
@@ -33,7 +33,7 @@ print(path)
 frame = cv2.imread(path)
 frame = frame.reshape((frame.shape[0] * frame.shape[1], 3))
 # Cluster the colors for dominance detection
-kmeans = KMeans(n_clusters = CLST_NUMBER).fit(frame)
+kmeans = KMeans(n_clusters=CLST_NUMBER, max_iter=MAX_ITER).fit(frame)
 (palette, labels) = (kmeans.cluster_centers_, kmeans.labels_)
 # Rescale the colors for matplotlib
 rescaled = [aux.reshapeColor(color) for color in palette]
@@ -42,6 +42,6 @@ sortedClusters = [sorted(cls) for cls in [rescaled]]
 ##############################################################################
 # Plot palette
 ##############################################################################
-fig, ax = plt.subplots(figsize=(10, 5))
+fig, ax = plt.subplots(figsize=(10,5))
 ax.axis('off')
 plt.imshow(list(map(list, zip(*sortedClusters))))

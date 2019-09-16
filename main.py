@@ -19,39 +19,26 @@ from matplotlib import pyplot as plt
 ##############################################################################
 (CLST_NUMBER, MAX_ITER) = (8, 1000)
 (I_PATH,O_PATH) = ('./in/', './out/')
+SELECTION = 2
 
 ##############################################################################
 # Load images
 ##############################################################################
-filepaths = sorted(glob.glob(I_PATH + '*.png'))
-path = filepaths[0]
+filepaths = sorted(glob.glob(I_PATH + '*.jpg'))
+path = filepaths[SELECTION]
 print(path)
 
 ##############################################################################
 # Cluster for dominance
 ##############################################################################
-# Read image and flatten it
-frame = cv2.imread(path)
-frame = frame.reshape((frame.shape[0] * frame.shape[1], 3))
-# Cluster the colors for dominance detection
-kmeans = KMeans(n_clusters=CLST_NUMBER, max_iter=MAX_ITER).fit(frame)
-(palette, labels) = (kmeans.cluster_centers_, kmeans.labels_)
-# Rescale the colors for matplotlib
-rescaled = [aux.reshapeColor(color) for color in palette]
-sortedClusters = [sorted(cls) for cls in [rescaled]]
-
-##############################################################################
-# List hex and rgb
-##############################################################################
-sortedPalette = [aux.upscaleColor(i) for i in sortedClusters[0]]
-(hexColors, rgbColors) = (
-        [aux.rgb_to_hex(i) for i in sortedPalette],
-        sortedPalette
-    )
+img = cv2.imread(path)
+(colors, labels) = aux.calcDominantColors(img, clustersNumber=10, maxIter=1000)
+sortedPalette = [sorted(cls) for cls in [colors]][0]
+(hexColors, rgbColors) = aux.calcHexAndRGBFromPalette(sortedPalette)
 
 ##############################################################################
 # Plot palette
 ##############################################################################
 (fig, ax) = plt.subplots(figsize=(10, 5))
 ax.axis('off')
-plt.imshow(list(map(list, zip(*sortedClusters))))
+plt.imshow(list(map(list, zip(*[sortedPalette]))))

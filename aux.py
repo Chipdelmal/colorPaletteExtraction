@@ -48,4 +48,4 @@ def genColorBars(img, heightProp, palette):
             if (col % wBlk == 0) and (colorIter < clstNumber - 1):
                 colorIter = colorIter + 1
             pltAppend[row][col] = palette[colorIter]
-    return pltAppend
+    return pltAppend * 255

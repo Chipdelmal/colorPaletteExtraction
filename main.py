@@ -16,8 +16,8 @@ from PIL import Image
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-(CLST_NUM, MAX_ITER, PLT_HEIGHT) = (8, 1000, .05)
-(I_PATH,O_PATH, FILENAME) = ('./in/', './out/', 'loving.jpg')
+(I_PATH,O_PATH, FILENAME) = ('./in/', './out/', 'frame.jpg')
+(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (10, 1000, .03, .005)
 
 ##############################################################################
 # Load images
@@ -34,17 +34,16 @@ img = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
         img, cltsNumb=CLST_NUM, maxIter=MAX_ITER
     )
 (hexColors, rgbColors) = aux.calcHexAndRGBFromPalette(colors)
-pltAppend = aux.genColorBars(img, PLT_HEIGHT, colors)
+colorsBars = aux.genColorBars(img, BAR_HEIGHT, colors)
 
 ##############################################################################
 # Put the image back together
 ##############################################################################
+whiteBar = np.full((round(height * WHT_HEIGHT), width, depth), [255,255,255])
 newImg = np.row_stack((
-    pltAppend * 255,
-    np.full((round(height * .02), width, depth), [255,255,255]),
+    whiteBar, colorsBars, whiteBar,
     img,
-    np.full((round(height * .02), width, depth), [255,255,255]),
-    pltAppend * 255
+    whiteBar, colorsBars, whiteBar
 ))
 imgOut = Image.fromarray(newImg.astype('uint8'), 'RGB')
 imgOut.save('./out/' + FILENAME.split('.')[0] + '.png')

@@ -7,9 +7,9 @@ from sklearn.cluster import MiniBatchKMeans
 
 def reshapeColor(colorEightBit):
     # Transforming 0/255 BGR to 0/1 RGB
-    colors = list(colorEightBit)
-    colors.reverse()
-    return [i / 255 for i in colors]
+    # colors = list(colorEightBit)
+    # colors.reverse()
+    return [i / 255 for i in colorEightBit]
 
 
 def upscaleColor(color):

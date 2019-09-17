@@ -20,6 +20,8 @@ This script calculates the dominant colors of an image by using k-means clusteri
 * [sklearn](https://scikit-learn.org/stable/)
 
 
+<img src="./media/yak.jpg" width='100%'>
+
 ## Still To Do
 
 * Export the palette independently from the image

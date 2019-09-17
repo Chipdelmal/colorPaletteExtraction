@@ -9,7 +9,7 @@ This script calculates the dominant colors of an image by using k-means clusteri
 
 *NEED TO WRITE THE INSTRUCTIONS HERE*
 
-<img src="./media/loving.jpg">
+<img src="./media/loving.jpg" width='100%'>
 
 
 ##  Dependencies

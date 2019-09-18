@@ -1,9 +1,6 @@
 # Color Palette Extraction
 
-This script calculates the dominant colors of an image by using k-means clustering, and returns the obtained color palette.
-
-<img src="./media/frame.jpg">
-
+This script calculates the dominant colors of an image by using k-means clustering, and returns the obtained color palette. It can be used in batch to generate the grid of the changes in color palettes in a movie (provided that we have the frames which can be obtained with ffmpeg).
 
 ## Instructions
 
@@ -13,7 +10,7 @@ For easiest use (in batch):
 2. Run `batch.py`.
 3. All the processed files will be exported to the `./out/` folder.
 
-<img src="./media/loving.jpg" width='100%'>
+<img src="./media/frame.jpg">
 
 To change style parameters:
 
@@ -21,6 +18,8 @@ To change style parameters:
 * **MAX_ITER**: Sets the maximum number of iterations for the _k-means_ algorithm.
 * **BAR_HEIGHT**: Defines the height of the dominant colors bar as a proportion of the height of the input image.
 * **WHT_HEIGHT**: Sets the white buffer zone as a proportion of the height of the input image.
+
+<img src="./media/loving.jpg" width='100%'>
 
 ##  Dependencies
 
@@ -33,6 +32,7 @@ The script needs the following dependencies to be installed either in the base i
 
 * Overlay the hex code to the swatch
 * Translate the grid generator from _Mathematica_ to _Python_.
+* Link to the repo with the frames exporter.
 
 <hr>
 

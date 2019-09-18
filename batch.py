@@ -11,8 +11,11 @@ import glob
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-(I_PATH, O_PATH) = ('./in/Spirited/', './out/Spirited/')
-(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (6, 1000, .1, .1)
+(I_PATH, O_PATH) = (
+    '/Users/sanchez.hmsc/Desktop/Spirited/',
+    '/Users/sanchez.hmsc/Desktop/SpiritedOut/'
+)
+(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (6, 1000, .1, .05)
 
 ##############################################################################
 # Get filepaths

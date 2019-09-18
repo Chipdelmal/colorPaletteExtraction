@@ -53,7 +53,7 @@ def genColorBar(img, heightProp, palette):
 
 def getDominancePalette(
             imgPath,
-            clstNum=10,
+            clstNum=6,
             maxIters=1000,
             colorBarHeight=.03,
             whiteHeight=.005

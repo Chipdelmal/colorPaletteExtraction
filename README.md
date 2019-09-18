@@ -7,7 +7,11 @@ This script calculates the dominant colors of an image by using k-means clusteri
 
 ## Instructions
 
-*NEED TO WRITE THE INSTRUCTIONS HERE*
+For easiest use:
+
+1. Place your images in the `./in/` folder.
+2. Run `batch.py`.
+3. All the processed files will be exported to the `./out/` folder.
 
 <img src="./media/loving.jpg" width='100%'>
 
@@ -24,8 +28,7 @@ This script calculates the dominant colors of an image by using k-means clusteri
 
 ## Still To Do
 
-* Export the palette independently from the image
-* Add white sidebars
+* Overlay the hex code to the swatch
 
 <hr>
 

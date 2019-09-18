@@ -7,7 +7,7 @@ This script calculates the dominant colors of an image by using k-means clusteri
 
 ## Instructions
 
-For easiest use:
+For easiest use (in batch):
 
 1. Place your images in the `./in/` folder.
 2. Run `batch.py`.
@@ -15,6 +15,12 @@ For easiest use:
 
 <img src="./media/loving.jpg" width='100%'>
 
+To change style parameters:
+
+* *CLST_NUM*: Defines the number of dominant colors to detect.
+* *MAX_ITER*: Sets the maximum number of iterations for the _k-means_ algorithm.
+* *BAR_HEIGHT*: Defines the height of the dominant colors bar as a proportion of the height of the input image.
+* *WHT_HEIGHT*: Sets the white buffer zone as a proportion of the height of the input image.
 
 ##  Dependencies
 
@@ -23,8 +29,6 @@ For easiest use:
 * [numpy](https://numpy.org/)
 * [sklearn](https://scikit-learn.org/stable/)
 
-
-<img src="./media/yak.jpg" width='100%'>
 
 ## Still To Do
 

@@ -17,10 +17,10 @@ For easiest use (in batch):
 
 To change style parameters:
 
-* *CLST_NUM*: Defines the number of dominant colors to detect.
-* *MAX_ITER*: Sets the maximum number of iterations for the _k-means_ algorithm.
-* *BAR_HEIGHT*: Defines the height of the dominant colors bar as a proportion of the height of the input image.
-* *WHT_HEIGHT*: Sets the white buffer zone as a proportion of the height of the input image.
+* **CLST_NUM**: Defines the number of dominant colors to detect.
+* **MAX_ITER**: Sets the maximum number of iterations for the _k-means_ algorithm.
+* **BAR_HEIGHT**: Defines the height of the dominant colors bar as a proportion of the height of the input image.
+* **WHT_HEIGHT**: Sets the white buffer zone as a proportion of the height of the input image.
 
 ##  Dependencies
 
@@ -34,6 +34,7 @@ The script needs the following dependencies to be installed either in the base i
 ## Still To Do
 
 * Overlay the hex code to the swatch
+* Translate the grid generator from _Mathematica_ to _Python_.
 
 <hr>
 

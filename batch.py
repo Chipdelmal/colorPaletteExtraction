@@ -11,14 +11,20 @@ import glob
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-(I_PATH, O_PATH) = ('./in/', './out/')
-(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (6, 1000, .05, .005)
+(I_PATH, O_PATH) = ('./in/Spirited/', './out/Spirited/')
+(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (6, 1000, .1, .1)
+
+##############################################################################
+# Get filepaths
+##############################################################################
+filepaths = sorted(glob.glob(I_PATH + '*[.png, .jpg, .jpeg]'))
+filesNumber = len(filepaths)
 
 ##############################################################################
 # Run the dominance detection
 ##############################################################################
-filepaths = glob.glob(I_PATH + '*[.png, .jpg, .jpeg]')
-for filename in filepaths:
+for (i, filename) in enumerate(filepaths):
+    print('Processing image ' + str(i + 1) + '/' + str(filesNumber))
     (imgOut, swatch, palette) = aux.getDominancePalette(
             filename,
             clstNum=CLST_NUM,
@@ -31,5 +37,5 @@ for filename in filepaths:
     # Export the results
     ###########################################################################
     name = filename.split('/')[-1].split('.')[0]
-    imgOut.save('./out/' + name + '_Frame.png')
-    swatch.save('./out/' + name + '_Swatch.png')
+    imgOut.save(O_PATH + name + '_Frame.png')
+    # swatch.save('O_PATH' + name + '_Swatch.png')

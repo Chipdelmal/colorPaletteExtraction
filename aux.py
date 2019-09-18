@@ -76,9 +76,9 @@ def getDominancePalette(
             [255, 255, 255]
         )
     newImg = np.row_stack((
-            whiteBar, colorsBars, whiteBar,
-            img,
-            whiteBar, colorsBars, whiteBar
+            colorsBars,#whiteBar,
+            img, whiteBar
+            #colorsBars,
         ))
     palette = calcHexAndRGBFromPalette(colors)
     swatch = Image.fromarray(colorsBars.astype('uint8'), 'RGB')

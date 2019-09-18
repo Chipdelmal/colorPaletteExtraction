@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 from PIL import Image
 from sklearn.cluster import KMeans
-from sklearn.cluster import MiniBatchKMeans
+# from sklearn.cluster import MiniBatchKMeans
 
 
 def reshapeColor(colorEightBit):
@@ -37,11 +37,11 @@ def calcHexAndRGBFromPalette(palette):
     return (hexColors, rgbColors)
 
 
-def genColorBars(img, heightProp, palette):
+def genColorBar(img, heightProp, palette):
     clstNumber = len(palette)
     (height, width, depth) = img.shape
     pltAppend = np.zeros((round(height * heightProp), width, depth))
-    (wBlk, hBlk) = (round(width / clstNumber),round(height * heightProp))
+    (wBlk, hBlk) = (round(width / clstNumber), round(height * heightProp))
     for row in range(hBlk):
         colorIter = -1
         for col in range(width):
@@ -49,3 +49,38 @@ def genColorBars(img, heightProp, palette):
                 colorIter = colorIter + 1
             pltAppend[row][col] = palette[colorIter]
     return pltAppend * 255
+
+
+def getDominancePalette(
+            imgPath,
+            clstNum=10,
+            maxIters=1000,
+            colorBarHeight=.03,
+            whiteHeight=.005
+        ):
+    # Load image
+    bgr = cv2.imread(imgPath)
+    img = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
+    (height, width, depth) = img.shape
+
+    # Cluster for dominance
+    (colors, labels) = calcDominantColors(
+            img, cltsNumb=clstNum, maxIter=maxIters
+        )
+    (hexColors, rgbColors) = calcHexAndRGBFromPalette(colors)
+    colorsBars = genColorBar(img, colorBarHeight, colors)
+
+    # Put the image back together
+    whiteBar = np.full(
+            (round(height * whiteHeight), width, depth),
+            [255, 255, 255]
+        )
+    newImg = np.row_stack((
+            whiteBar, colorsBars, whiteBar,
+            img,
+            whiteBar, colorsBars, whiteBar
+        ))
+    palette = calcHexAndRGBFromPalette(colors)
+    swatch = Image.fromarray(colorsBars.astype('uint8'), 'RGB')
+    imgOut = Image.fromarray(newImg.astype('uint8'), 'RGB')
+    return (imgOut, swatch, palette)

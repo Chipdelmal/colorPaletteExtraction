@@ -7,7 +7,6 @@
 # ############################################################################
 
 import cv2
-import glob
 import aux
 import numpy as np
 from PIL import Image
@@ -15,7 +14,7 @@ from PIL import Image
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-(I_PATH,O_PATH, FILENAME) = ('./in/', './out/', 'enterprise.jpg')
+(I_PATH, O_PATH, FILENAME) = ('./in/', './out/', 'mononoke.jpg')
 (CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (10, 1000, .03, .005)
 
 ##############################################################################
@@ -38,11 +37,11 @@ colorsBars = aux.genColorBars(img, BAR_HEIGHT, colors)
 ##############################################################################
 # Put the image back together
 ##############################################################################
-whiteBar = np.full((round(height * WHT_HEIGHT), width, depth), [255,255,255])
+whiteBar = np.full((round(height * WHT_HEIGHT), width, depth), [255, 255, 255])
 newImg = np.row_stack((
-    whiteBar, colorsBars, whiteBar,
-    img,
-    whiteBar, colorsBars, whiteBar
-))
+        whiteBar, colorsBars, whiteBar,
+        img,
+        whiteBar, colorsBars, whiteBar
+    ))
 imgOut = Image.fromarray(newImg.astype('uint8'), 'RGB')
 imgOut.save('./out/' + FILENAME.split('.')[0] + '.png')

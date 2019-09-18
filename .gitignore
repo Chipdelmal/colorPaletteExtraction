@@ -1,5 +1,10 @@
 # Ignore media files
-*.png
+/in/*.png
+/in/*.jpg
+/in/*.jpeg
+/out/*.png
+/out/*.jpg
+/out/*.jpeg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

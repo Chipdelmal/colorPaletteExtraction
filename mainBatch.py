@@ -30,10 +30,8 @@ for (i, filename) in enumerate(filepaths):
     print('Processing image ' + str(i + 1) + '/' + str(filesNumber))
     (imgOut, swatch, palette) = aux.getDominancePalette(
             filename,
-            clstNum=CLST_NUM,
-            maxIters=MAX_ITER,
-            colorBarHeight=BAR_HEIGHT,
-            whiteHeight=WHT_HEIGHT
+            clstNum=CLST_NUM, maxIters=MAX_ITER,
+            colorBarHeight=BAR_HEIGHT, whiteHeight=WHT_HEIGHT
         )
 
     ###########################################################################

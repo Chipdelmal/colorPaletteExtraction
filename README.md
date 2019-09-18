@@ -7,7 +7,7 @@ This script calculates the dominant colors of an image by using k-means clusteri
 For easiest use (in batch):
 
 1. Place your images in the `./in/` folder.
-2. Run `batch.py`.
+2. Run [`mainBatch.py`](./mainBatch.py).
 3. All the processed files will be exported to the `./out/` folder.
 
 <img src="./media/frame.jpg">

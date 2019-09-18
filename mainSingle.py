@@ -20,10 +20,8 @@ FILENAME = 'spirited.jpg'
 path = I_PATH + FILENAME
 (imgOut, swatch, palette) = aux.getDominancePalette(
         path,
-        clstNum=CLST_NUM,
-        maxIters=MAX_ITER,
-        colorBarHeight=BAR_HEIGHT,
-        whiteHeight=WHT_HEIGHT
+        clstNum=CLST_NUM, maxIters=MAX_ITER,
+        colorBarHeight=BAR_HEIGHT, whiteHeight=WHT_HEIGHT
     )
 
 ##############################################################################

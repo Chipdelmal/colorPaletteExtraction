@@ -24,7 +24,9 @@ To change style parameters:
 
 ##  Dependencies
 
-The script needs the following dependencies to be installed either in the base installation or a virtual environment: [cv2](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html), [Pillow](https://pillow.readthedocs.io/en/stable/), [numpy](https://numpy.org/), [sklearn](https://scikit-learn.org/stable/).
+The script needs the following dependencies to be installed either in the base installation or a virtual environment:
+
+[cv2](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html), [Pillow](https://pillow.readthedocs.io/en/stable/), [numpy](https://numpy.org/), [sklearn](https://scikit-learn.org/stable/).
 
 
 <img src="./media/vincent.jpg" width='100%'>

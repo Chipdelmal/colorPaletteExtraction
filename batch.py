@@ -15,7 +15,7 @@ import glob
     '/Users/sanchez.hmsc/Desktop/Tonight/',
     '/Users/sanchez.hmsc/Desktop/TonightOut/'
 )
-(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (5, 1000, .1, .125)
+(CLST_NUM, MAX_ITER, BAR_HEIGHT, BUF_HEIGHT) = (5, 1000, .1, .25)
 
 ##############################################################################
 # Get filepaths
@@ -33,7 +33,7 @@ for (i, filename) in enumerate(filepaths):
             clstNum=CLST_NUM,
             maxIters=MAX_ITER,
             colorBarHeight=BAR_HEIGHT,
-            whiteHeight=WHT_HEIGHT
+            bufferHeight=BUF_HEIGHT
         )
 
     ###########################################################################

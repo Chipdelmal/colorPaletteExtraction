@@ -9,20 +9,26 @@ from sklearn.cluster import KMeans
 def reshapeColor(colorEightBit):
     '''
     Returns a color triplet in the range of 0 to 1 from 0 to 255.
+    * I: List of 8-bit RGB components
+    * O: Normalized RBG components
     '''
     return [i / 255 for i in colorEightBit]
 
 
-def upscaleColor(color):
+def upscaleColor(colorNormalized):
     '''
     Returns a color triplet of 0 to 255 from 0 to 1.
+    * I: Normalized list of RGB components
+    * O: List of 8-bit RGB components
     '''
-    return [i * 255 for i in color]
+    return [i * 255 for i in colorNormalized]
 
 
 def rgb_to_hex(rgb):
     '''
     Converts an RGB triplet to its hex equivalent.
+    * I: RGB 8-bit list
+    * O: Hex color string
     '''
     return '#%02x%02x%02x' % (int(rgb[0]), int(rgb[1]), int(rgb[2]))
 
@@ -31,6 +37,11 @@ def calcDominantColors(img, cltsNumb=10, maxIter=1000):
     '''
     Returns a tuple with the dominant colors arrays and their
         clustering labels (sklearn).
+    * I: 
+        -img: Image imported with cv2.imread
+        -clstNumb: Number of desired clusters
+        -maxIter: Maximum iterations number for detection
+    * O: Dominant colors arrays and clusters labels (sklearn)
     '''
     frame = img.reshape((img.shape[0] * img.shape[1], 3))
     # Cluster the colors for dominance detection
@@ -44,6 +55,8 @@ def calcDominantColors(img, cltsNumb=10, maxIter=1000):
 def calcHexAndRGBFromPalette(palette):
     '''
     Returns the hex and RGB codes for the colors in a palette.
+    * I: Color palette
+    * O: Dictionary with hex and rgb colors
     '''
     sortedPalette = [upscaleColor(i) for i in palette]
     (hexColors, rgbColors) = (
@@ -57,6 +70,11 @@ def genColorSwatch(img, heightProp, palette):
     '''
     Creates a color swatch that is proportional in height to the original
        image (whilst being the same width).
+    * I:
+        -img: Image imported with cv2.imread
+        -heightProp: Desired height of the swatch in proportion to original img
+        -palette: Calculated palette through dominance detection
+    * O:
     '''
     clstNumber = len(palette)
     (height, width, depth) = img.shape
@@ -74,6 +92,13 @@ def genColorSwatch(img, heightProp, palette):
 def genColorBar(width, height, color=[0,0,0], depth=3):
     '''
     Creates a solid color bar to act as visual buffer between frames rows.
+    * I:
+        -width: Desired width of the bar
+        -height: Desired height of the bar
+        -color: Desired color of the bar
+        -depth: Number of color components (3 for RGB)
+    * O:
+        -colorBar: Image with a solid color bar
     '''
     colorBar = np.full(
             (height, width, depth),
@@ -86,12 +111,23 @@ def getDominancePalette(
             clstNum=6,
             maxIters=1000,
             colorBarHeight=.03,
-            whiteHeight=.005,
+            bufferHeight=.005,
             colorBuffer=[0,0,0]
         ):
     '''
     Wrapper function that puts together all the elements to create the frame
         with its swatch, and buffer bars.
+    * I:
+        -imgPath: Image location
+        -clstNum: Number of desired clusters
+        -maxIters: Maximum number of iterations for convergence
+        -colorBarHeight: Height of the color swatch (as proportion to img)
+        -bufferHeight: Height of the color buffer (as proportion to img)
+        -colorBuffer: Color of the buffer
+    * O:
+        -imgOut: Compiled image with swatch and buffers
+        -swatch: Color swatch
+        -palette: Hex and RGB color values
     '''
     # Load image
     bgr = cv2.imread(imgPath)
@@ -107,7 +143,7 @@ def getDominancePalette(
     colorsBars = genColorSwatch(img, colorBarHeight, colors)
     # Put the image back together
     whiteBar = genColorBar(
-            width, round(height * whiteHeight), color=colorBuffer
+            width, round(height * bufferHeight), color=colorBuffer
         )
     newImg = np.row_stack((
             whiteBar, colorsBars,

@@ -4,7 +4,9 @@ This script calculates the dominant colors of an image by using k-means clusteri
 
 ## Instructions
 
-For easiest use (in batch):
+For now, I'm running my scripts from [Atom](https://atom.io/) with [Hydrogen](https://atom.io/packages/hydrogen), so the easiest way to run them is to edit the inputs directly in the first lines of the code (clearly commented), and run the whole script. I hope to have some time in the future to do a proper terminal wrapper.
+
+### Easy use (batch)
 
 1. Place your images in the `./in/` folder.
 2. Run [`mainBatch.py`](./mainBatch.py).
@@ -12,12 +14,22 @@ For easiest use (in batch):
 
 <img src="./media/frame.jpg">
 
+### Advanced use
+
+
+
+The main files are:
+
+* **[mainBatch.py](https://github.com/Chipdelmal/colorPaletteExtractor/blob/master/mainBatch.py)**: This script should be used to get all the images within a folder, process them, and export them into another folder.
+* **[mainSingle.py](https://github.com/Chipdelmal/colorPaletteExtractor/blob/master/mainSingle.py)**: This is meant to be used for a single image to export the frame, swatch, and color codes (hex and rgb) into the output folder.
+
 To change style parameters:
 
 * **CLST_NUM**: Defines the number of dominant colors to detect.
 * **MAX_ITER**: Sets the maximum number of iterations for the _k-means_ algorithm.
 * **BAR_HEIGHT**: Defines the height of the dominant colors bar as a proportion of the height of the input image.
-* **WHT_HEIGHT**: Sets the white buffer zone as a proportion of the height of the input image.
+* **BUF_HEIGHT**: Sets the buffer zone as a proportion of the height of the input image.
+* **BUF_COLOR**: Sets the color of the buffer zone around the image.
 
 <img src="./media/loving.jpg" width='100%'>
 

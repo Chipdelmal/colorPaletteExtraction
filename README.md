@@ -2,6 +2,8 @@
 
 This script calculates the dominant colors of an image by using k-means clustering, and returns the obtained color palette. It can be used in batch to generate the grid of the changes in color palettes in a movie (provided that we have the frames which can be obtained with ffmpeg).
 
+<hr>
+
 ## Instructions
 
 For now, I'm running my scripts from [Atom](https://atom.io/) with [Hydrogen](https://atom.io/packages/hydrogen), so the easiest way to run them is to edit the inputs directly in the first lines of the code (clearly commented), and run the whole script. I hope to have some time in the future to do a proper terminal wrapper.
@@ -15,8 +17,6 @@ For now, I'm running my scripts from [Atom](https://atom.io/) with [Hydrogen](ht
 <img src="./media/frame.jpg">
 
 ### Advanced use
-
-
 
 The main files are:
 
@@ -35,16 +35,24 @@ To change style parameters:
 
 ##  Dependencies
 
-The script needs the following dependencies to be installed either in the base installation or a virtual environment: [cv2](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html), [Pillow](https://pillow.readthedocs.io/en/stable/), [numpy](https://numpy.org/), [sklearn](https://scikit-learn.org/stable/).
+The script needs the following dependencies to be installed either in the base installation or a virtual environment: [cv2](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html), [Pillow](https://pillow.readthedocs.io/en/stable/), [numpy](https://numpy.org/), [sklearn](https://scikit-learn.org/stable/), and [ffmpeg-python](https://github.com/kkroening/ffmpeg-python).
+
+```
+pip install opencv-python
+pip install numpy
+pip install Pillow
+pip install scikit-learn
+pip install ffmpeg-python
+```
 
 
 <img src="./media/vincent.jpg" width='100%'>
 
 ## Still To Do
 
-* Overlay the hex code to the swatch
+* Overlay the hex code to the swatch.
 * Translate the grid generator from _Mathematica_ to _Python_.
-* Link to the repo with the frames exporter.
+* Link to the repo with the _ffmpeg_ frames exporter.
 
 <hr>
 

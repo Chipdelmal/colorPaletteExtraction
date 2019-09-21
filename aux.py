@@ -63,7 +63,7 @@ def calcHexAndRGBFromPalette(palette):
             [rgb_to_hex(i) for i in sortedPalette],
             sortedPalette
         )
-    return {'hex': hexColors, 'rgb':rgbColors}
+    return {'hex': hexColors, 'rgb': rgbColors}
 
 
 def genColorSwatch(img, heightProp, palette):

@@ -1,4 +1,5 @@
 
+import csv
 import cv2
 import numpy as np
 from PIL import Image
@@ -21,7 +22,7 @@ def upscaleColor(colorNormalized):
     * I: Normalized list of RGB components
     * O: List of 8-bit RGB components
     '''
-    return [i * 255 for i in colorNormalized]
+    return [int(round(i * 255)) for i in colorNormalized]
 
 
 def rgb_to_hex(rgb):
@@ -89,7 +90,26 @@ def genColorSwatch(img, heightProp, palette):
     return pltAppend * 255
 
 
-def genColorBar(width, height, color=[0,0,0], depth=3):
+def writeColorPalette(filepath, palette):
+    '''
+    Exports the HEX and RGB values of the palette to a tsv file.
+    * I:
+        -filepath: Path on disk to write the file to
+        -palette: Palette output of the getDominancePalette
+    * O:
+        -True
+    '''
+    with open(filepath, 'w') as csvfile:
+        wtr = csv.writer(csvfile, delimiter='\t')
+        for i in range(len(palette['hex'])):
+            wtr.writerow([
+                    palette['hex'][i],
+                    palette['rgb'][i]
+                ])
+    return True
+
+
+def genColorBar(width, height, color=[0, 0, 0], depth=3):
     '''
     Creates a solid color bar to act as visual buffer between frames rows.
     * I:
@@ -106,13 +126,14 @@ def genColorBar(width, height, color=[0,0,0], depth=3):
         )
     return colorBar
 
+
 def getDominancePalette(
             imgPath,
             clstNum=6,
             maxIters=1000,
             colorBarHeight=.03,
             bufferHeight=.005,
-            colorBuffer=[0,0,0]
+            colorBuffer=[0, 0, 0]
         ):
     '''
     Wrapper function that puts together all the elements to create the frame

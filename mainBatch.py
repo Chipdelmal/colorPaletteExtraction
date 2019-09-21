@@ -11,11 +11,9 @@ import glob
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-(I_PATH, O_PATH) = (
-    '/Users/sanchez.hmsc/Desktop/Spirited/',
-    '/Users/sanchez.hmsc/Desktop/SpiritedOut/'
-)
-(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (6, 1000, .1, .05)
+(I_PATH, O_PATH) = ('./in/', './out/')
+(CLST_NUM, MAX_ITER) = (6, 1000)
+(BAR_HEIGHT, BUF_HEIGHT, BUF_COLOR) = (.05, 0, [255, 255, 255])
 
 ##############################################################################
 # Get filepaths
@@ -31,7 +29,8 @@ for (i, filename) in enumerate(filepaths):
     (imgOut, swatch, palette) = aux.getDominancePalette(
             filename,
             clstNum=CLST_NUM, maxIters=MAX_ITER,
-            colorBarHeight=BAR_HEIGHT, whiteHeight=WHT_HEIGHT
+            colorBarHeight=BAR_HEIGHT, bufferHeight=BUF_HEIGHT,
+            colorBuffer=BUF_COLOR
         )
 
     ###########################################################################
@@ -39,4 +38,3 @@ for (i, filename) in enumerate(filepaths):
     ###########################################################################
     name = filename.split('/')[-1].split('.')[0]
     imgOut.save(O_PATH + name + '_Frame.png')
-    # swatch.save('O_PATH' + name + '_Swatch.png')

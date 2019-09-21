@@ -10,9 +10,10 @@ import aux
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-FILENAME = 'spirited.jpg'
+FILENAME = 'mononoke.jpg'
 (I_PATH, O_PATH) = ('./in/', './out/')
-(CLST_NUM, MAX_ITER, BAR_HEIGHT, WHT_HEIGHT) = (10, 1000, .05, .005)
+(CLST_NUM, MAX_ITER) = (6, 1000)
+(BAR_HEIGHT, BUF_HEIGHT, BUF_COLOR) = (.05, .005, [255, 255, 255])
 
 ##############################################################################
 # Run the dominance detection
@@ -21,11 +22,14 @@ path = I_PATH + FILENAME
 (imgOut, swatch, palette) = aux.getDominancePalette(
         path,
         clstNum=CLST_NUM, maxIters=MAX_ITER,
-        colorBarHeight=BAR_HEIGHT, whiteHeight=WHT_HEIGHT
+        colorBarHeight=BAR_HEIGHT, bufferHeight=BUF_HEIGHT,
+        colorBuffer=BUF_COLOR
     )
 
 ##############################################################################
 # Export the results
 ##############################################################################
-imgOut.save('./out/' + FILENAME.split('.')[0] + '_Frame.png')
-swatch.save('./out/' + FILENAME.split('.')[0] + '_Swatch.png')
+name = path.split('/')[-1].split('.')[0]
+imgOut.save('./out/' + name + '_Frame.png')
+swatch.save('./out/' + name + '_Swatch.png')
+aux.writeColorPalette("./out/" + name + ".tsv", palette)

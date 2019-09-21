@@ -14,7 +14,7 @@ For now, I'm running my scripts from [Atom](https://atom.io/) with [Hydrogen](ht
 2. Run [`mainBatch.py`](./mainBatch.py).
 3. All the processed files will be exported to the `./out/` folder.
 
-<img src="./media/frame.jpg">
+<img src="./media/frame.jpg" width="50%"><img src="./media/yakul.jpg" width="50%">
 
 ### Advanced use
 
@@ -31,7 +31,6 @@ To change style parameters:
 * **BUF_HEIGHT**: Sets the buffer zone as a proportion of the height of the input image.
 * **BUF_COLOR**: Sets the color of the buffer zone around the image.
 
-<img src="./media/loving.jpg" width='100%'>
 
 ##  Dependencies
 
@@ -45,14 +44,14 @@ pip install scikit-learn
 pip install ffmpeg-python
 ```
 
-
-<img src="./media/vincent.jpg" width='100%'>
+<img src="./media/loving.jpg" width='100%'>
 
 ## Still To Do
 
 * Overlay the hex code to the swatch.
 * Translate the grid generator from _Mathematica_ to _Python_.
 * Link to the repo with the _ffmpeg_ frames exporter.
+
 
 <hr>
 

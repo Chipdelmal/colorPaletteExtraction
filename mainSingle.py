@@ -10,7 +10,7 @@ import aux
 ##############################################################################
 # Setup paths and clusters number
 ##############################################################################
-FILENAME = 'mononoke.jpg'
+FILENAME = 'mononoke1.jpg'
 (I_PATH, O_PATH) = ('./in/', './out/')
 (CLST_NUM, MAX_ITER) = (6, 1000)
 (BAR_HEIGHT, BUF_HEIGHT, BUF_COLOR) = (.05, .005, [255, 255, 255])

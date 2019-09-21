@@ -44,7 +44,7 @@ pip install scikit-learn
 pip install ffmpeg-python
 ```
 
-<img src="./media/loving.jpg" width='100%'>
+<img src="./media/loving.jpg" height="225px" width='50%'><img src="./media/san.jpg"  height="225px" width='50%'>
 
 ## Still To Do
 

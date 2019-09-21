@@ -34,7 +34,19 @@ To change style parameters:
 
 ##  Dependencies
 
-The script needs the following dependencies to be installed either in the base installation or a virtual environment: [cv2](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html), [Pillow](https://pillow.readthedocs.io/en/stable/), [numpy](https://numpy.org/), [sklearn](https://scikit-learn.org/stable/), and [ffmpeg-python](https://github.com/kkroening/ffmpeg-python).
+The script needs the following dependencies to be installed either in the base installation or a virtual environment: [cv2](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html), [Pillow](https://pillow.readthedocs.io/en/stable/), [numpy](https://numpy.org/), [sklearn](https://scikit-learn.org/stable/), and [ffmpeg-python](https://github.com/kkroening/ffmpeg-python). These dependencies can be installed through the provided conda environment:
+
+```
+conda env create -f cpExtract.yml
+```
+
+the [REQUIREMENTS.txt](./REQUIREMENTS.txt) file:
+
+```
+conda create -n new cpExtract --file REQUIREMENTS.txt
+```
+
+or individually:
 
 ```
 pip install opencv-python
@@ -53,8 +65,8 @@ pip install ffmpeg-python
 * Link to the repo with the _ffmpeg_ frames exporter.
 
 
-<hr>
+# Author
 
-<img src="./media/pusheen.jpg" height="130px" align="middle"><br>
+<img src="./media/pusheen.jpg" height="125px" align="middle"><br>
 
 [Héctor M. Sánchez C.](https://chipdelmal.github.io/)

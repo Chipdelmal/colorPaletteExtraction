@@ -1,2 +1,3 @@
 # colorPaletteExtraction
-Color palette extractor for future artsci projects.
+
+Your frames/swatches/palettes will be exported here!

@@ -1,2 +1,3 @@
 # colorPaletteExtraction
-Color palette extractor for future artsci projects.
+
+Place your original images in this folder!

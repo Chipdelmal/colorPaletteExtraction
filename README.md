@@ -40,7 +40,7 @@ The script needs the following dependencies to be installed either in the base i
 conda env create -f cpExtract.yml
 ```
 
-the [REQUIREMENTS.txt](./REQUIREMENTS.txt) file:
+the [REQUIREMENTS.txt](./REQUIREMENTS) file:
 
 ```
 conda create -n new cpExtract --file REQUIREMENTS.txt

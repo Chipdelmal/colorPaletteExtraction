@@ -30,6 +30,6 @@ path = I_PATH + FILENAME
 # Export the results
 ##############################################################################
 name = path.split('/')[-1].split('.')[0]
-imgOut.save('./out/' + name + '_Frame.png')
-swatch.save('./out/' + name + '_Swatch.png')
-aux.writeColorPalette("./out/" + name + ".tsv", palette)
+imgOut.save(O_PATH + name + '_Frame.png')
+swatch.save(O_PATH + name + '_Swatch.png')
+aux.writeColorPalette(O_PATH + name + ".tsv", palette)

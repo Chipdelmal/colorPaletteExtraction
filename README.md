@@ -61,7 +61,7 @@ pip install ffmpeg-python
 ## Still To Do
 
 * Overlay the hex code to the swatch.
-* Translate the grid generator from _Mathematica_ to _Python_.
+* Translate the [images grid generator](./imagesGrid.nb) from _Mathematica_ to _Python_.
 * Link to the repo with the _ffmpeg_ frames exporter.
 
 

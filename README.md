@@ -6,7 +6,7 @@ This script calculates the dominant colors of an image by using k-means clusteri
 
 ## Instructions
 
-For now, I'm running my scripts from [Atom](https://atom.io/) with [Hydrogen](https://atom.io/packages/hydrogen), so the easiest way to run them is to edit the inputs directly in the first lines of the code (clearly commented), and run the whole script. I hope to have some time in the future to do a proper terminal wrapper.
+For now, I'm running my scripts from [Atom](https://atom.io/) with [Hydrogen](https://atom.io/packages/hydrogen), so the easiest way to modify the output is to edit the inputs directly in the first lines of the code (clearly commented), and run the whole script. I hope to have some time in the future to do a proper terminal wrapper.
 
 ### Easy use (batch)
 

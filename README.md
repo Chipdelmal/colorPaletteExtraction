@@ -65,6 +65,10 @@ pip install ffmpeg-python
 * Link to the repo with the _ffmpeg_ frames exporter.
 
 
+# References
+
+* https://stackoverflow.com/questions/43111029/how-to-find-the-average-colour-of-an-image-in-python-with-opencv
+
 # Author
 
 <img src="./media/pusheen.jpg" height="125px" align="middle"><br>

@@ -7,6 +7,7 @@
 /out/*.jpeg
 /out/*.csv
 /out/*.tsv
+*.jpg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

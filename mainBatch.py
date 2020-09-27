@@ -13,7 +13,7 @@ import glob
 ##############################################################################
 (I_PATH, O_PATH) = ('./in/', './out/')
 (CLST_NUM, MAX_ITER) = (6, 1000)
-(BAR_HEIGHT, BUF_HEIGHT, BUF_COLOR) = (.05, 0, [255, 255, 255])
+(BAR_HEIGHT, BUF_HEIGHT, BUF_COLOR) = (.1, .1, [0, 0, 0])
 
 ##############################################################################
 # Get filepaths
@@ -25,7 +25,7 @@ filesNumber = len(filepaths)
 # Run the dominance detection
 ##############################################################################
 for (i, filename) in enumerate(filepaths):
-    print('Processing image ' + str(i + 1) + '/' + str(filesNumber))
+    print('* Processing image '+str(i+1)+'/'+str(filesNumber), end='\r')
     (imgOut, swatch, palette) = aux.getDominancePalette(
             filename,
             clstNum=CLST_NUM, maxIters=MAX_ITER,
